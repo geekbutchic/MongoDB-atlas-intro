@@ -98,3 +98,26 @@ db.posts.deleteMany({
 })
 
 // SECOND HALF OF ASSIGNMENT
+
+const getPosts = (limit, skip, sortField, sortOrder, filterField, filterValue) => {
+    
+    //Expand this functionality
+    const dbResult = db.posts.find({}).toArray()
+    
+    return dbResult
+}
+
+console.log(getPosts(10, 2, "createdAt", 1, "author", "James"))
+
+
+const getPosts = (limit, skip, sortField, sortOrder, filterField, filterValue) => {
+    
+    //Expand this functionality
+    const dbResult = db.posts.find({
+
+    }).limit(10).skip(2).sort({createdAt:1})
+    
+    return dbResult
+}
+
+console.log(getPosts(10, 2, "createdAt", 1, "author", "James"))
