@@ -83,7 +83,7 @@ db.posts
   })
   .limit(100);
 
-//STEP 1C. UPDATE BLOG WITH MANY 
+//STEP 1C. UPDATE BLOG WITH MANY
 
 db.posts.updateMany(
   { author: "Darren Abbott" },
@@ -92,32 +92,26 @@ db.posts.updateMany(
   }
 );
 
-// STEP 4C. DELETE MANY 
+// STEP 4C. DELETE MANY
 db.posts.deleteMany({
-    // ENTER AN EMPTY OBJECT AND THAT DELETES ALL THE POSTS
-})
+  // ENTER AN EMPTY OBJECT AND THAT DELETES ALL THE POSTS
+});
 
 // SECOND HALF OF ASSIGNMENT
+const getPosts = (
+  limit,
+  skip,
+  sortField,
+  sortOrder,
+  filterField,
+  filterValue
+) => {
+  //Expand this functionality
+  const dbResult = db.posts.find({
 
-const getPosts = (limit, skip, sortField, sortOrder, filterField, filterValue) => {
-    
-    //Expand this functionality
-    const dbResult = db.posts.find({}).toArray()
-    
-    return dbResult
-}
+  }).limit(10).skip(2).sort({ createdAt: 1 }).aggregate({$filter: {author: {$eq : "James"}}})
 
-console.log(getPosts(10, 2, "createdAt", 1, "author", "James"))
+  return dbResult;
+};
 
-
-const getPosts = (limit, skip, sortField, sortOrder, filterField, filterValue) => {
-    
-    //Expand this functionality
-    const dbResult = db.posts.find({
-
-    }).limit(10).skip(2).sort({createdAt:1})
-    
-    return dbResult
-}
-
-console.log(getPosts(10, 2, "createdAt", 1, "author", "James"))
+console.log(getPosts(10, 2, "createdAt", 1, "author", "James"));
