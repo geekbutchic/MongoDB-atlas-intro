@@ -108,9 +108,9 @@ const getPosts = (
 ) => {
   //Expand this functionality
   const dbResult = db.posts.find({
-
-  }).limit(10).skip(2).sort({ createdAt: 1 }).aggregate({$filter: {author: {$eq : "James"}}})
-
+    author : "James"
+  }).limit(10).skip(2).sort({ createdAt: 1 })
+ 
   return dbResult;
 };
 
